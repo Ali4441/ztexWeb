@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../store/AuthProvider';
+const API_URL = import.meta.env.VITE_API_URL;
 function Register() {
   const { user: userData } = useContext(AuthContext);
   const [user, setUser] = useState({
@@ -34,11 +35,14 @@ function Register() {
     console.log(user);
 
     try {
-      const response = await axios.post("https://ztexweb.onrender.com/api/contact", user, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        `${API_URL}/contact`,
+        user,
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true
+        }
+      );
 
       // On success
       console.log("Response:", response.data);

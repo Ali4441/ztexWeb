@@ -3,6 +3,7 @@ import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../store/AuthProvider';
+const API_URL = import.meta.env.VITE_API_URL;
 const Login = () => {
 
   const { login } = useContext(AuthContext);
@@ -17,7 +18,8 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://ztexweb.onrender.com/api/login",
+        `${API_URL}/login`,
+
         user,
         { headers: { "Content-Type": "application/json" } }
       );

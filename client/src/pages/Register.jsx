@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from "axios";
 import { NavLink, useNavigate } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast';
-
+const API_URL = import.meta.env.VITE_API_URL;
 function Register() {
   const [user, setUser] = useState({
     name: "",
@@ -47,7 +47,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        "https://ztexweb.onrender.com/api/register",
+        `${API_URL}/register`,
         user,
         { headers: { "Content-Type": "application/json" } }
       );

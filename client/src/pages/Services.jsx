@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
 const Services = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,7 +11,7 @@ const Services = () => {
     const fetchServices = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:10000/api/listOFcourse",
+          "API_URL/listOFcourse",
           {
             headers: { "Content-Type": "application/json" }
           }
