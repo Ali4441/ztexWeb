@@ -17,7 +17,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/login",
+        "https://ztexweb.onrender.com/api/login",
         user,
         { headers: { "Content-Type": "application/json" } }
       );

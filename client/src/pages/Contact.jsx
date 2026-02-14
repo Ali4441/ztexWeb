@@ -34,7 +34,7 @@ function Register() {
     console.log(user);
 
     try {
-      const response = await axios.post("http://localhost:8080/api/contact", user, {
+      const response = await axios.post("https://ztexweb.onrender.com/api/contact", user, {
         headers: {
           "Content-Type": "application/json",
         },
