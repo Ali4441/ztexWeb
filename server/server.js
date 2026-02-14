@@ -8,11 +8,13 @@ const spamRouter = require('./route/spamRoutes.js');
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: [
+    "http://localhost:5173",        // local development
+    "https://ztexweb-3.onrender.com" // deployed frontend URL
+  ],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
