@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const router = require('./route/auth-router');
 const connectDB = require('./utils/db.js');
@@ -9,28 +11,26 @@ const app = express();
 
 app.use(cors({
   origin: [
-    "http://localhost:5173",        // local development
-    "https://ztexweb-3.onrender.com" // deployed frontend URL
+    "http://localhost:5173",
+    process.env.FRONTEND_URL
   ],
-  credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"]
+  credentials: true
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', router);
 app.use('/api/spam', spamRouter);
 
-//error handler
 app.use(handleError);
 
-//connectDB
-connectDB().then(async () => {
+connectDB().then(() => {
   console.log("Database connected");
 
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 }).catch(err => {
-  console.log(" DB Connection Error:", err);
+  console.log("DB Connection Error:", err);
 });

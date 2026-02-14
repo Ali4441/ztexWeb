@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 
 module.exports = async () => {
   try {
-    const url = 'mongodb://localhost:27017/pastes'
+    const url = process.env.MONGO_URI || "mongodb://localhost:27017/pastes";
+
     await mongoose.connect(url);
-    console.log("connection is succesful to DataBase");
+
+    console.log("Database connected successfully");
 
   } catch (error) {
-    console.error(error);
-    process.exit(0);
+    console.error("DB connection error:", error);
+    process.exit(1);
   }
 };
