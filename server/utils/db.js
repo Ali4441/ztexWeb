@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 module.exports = async () => {
   try {
-    const url = process.env.MONGO_URI || "mongodb://localhost:27017/pastes";
+    const url = process.env.MONGO_URI || "mongodb://localhost:27017/ztexweb";
 
     await mongoose.connect(url);
 
