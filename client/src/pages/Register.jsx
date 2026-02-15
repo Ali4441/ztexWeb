@@ -3,6 +3,7 @@ import axios from "axios";
 import { NavLink, useNavigate } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast';
 const API_URL = import.meta.env.VITE_API_URL;
+
 function Register() {
   const [user, setUser] = useState({
     name: "",
@@ -46,13 +47,13 @@ function Register() {
     }
 
     try {
-      const response = await axios.post(
-        `${API_URL}/api/register`,
-        user,
-        {
-          headers: { "Content-Type": "application/json" }
-        }
-      );
+      const response = await axios.post(`${API_URL}/api/register`, user, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true
+      });
+
+
+
 
       if (response.data.success === true) {
         toast.success("Registration successfully!");
