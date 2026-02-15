@@ -36,7 +36,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        `${API_URL}/contact`,
+        `${API_URL}/api/contact`,
         user,
         {
           headers: { "Content-Type": "application/json" },

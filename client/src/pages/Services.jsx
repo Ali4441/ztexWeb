@@ -10,8 +10,10 @@ const Services = () => {
 
     const fetchServices = async () => {
       try {
+
+
         const response = await axios.get(
-          "API_URL/listOFcourse",
+          `${API_URL}/api/listOFcourse`,
           {
             headers: { "Content-Type": "application/json" }
           }

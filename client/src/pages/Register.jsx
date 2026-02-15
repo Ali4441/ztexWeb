@@ -47,9 +47,11 @@ function Register() {
 
     try {
       const response = await axios.post(
-        `${API_URL}/register`,
+        `${API_URL}/api/register`,
         user,
-        { headers: { "Content-Type": "application/json" } }
+        {
+          headers: { "Content-Type": "application/json" }
+        }
       );
 
       if (response.data.success === true) {
