@@ -18,7 +18,7 @@ export const SpamDetectorProvider = ({ children }) => {
   const [feedbackLoading, setFeedbackLoading] = useState(false);
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const detectSpam = async (e) => {
     e?.preventDefault?.();
